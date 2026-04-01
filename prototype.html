@@ -1,360 +1,1103 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kensha Mobiles - Gangadham | Premium Tech Showroom</title>
-    <meta name="description" content="Every Brand. Every Model. One Destination. Pune’s premium smartphone showroom. Latest iPhones, Samsung Flagships, and more.">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description" content="Every Brand. Every Model. One Destination. Pune's premium smartphone showroom. Latest iPhones, Samsung Flagships, and more.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                    colors: {
-                        zinc: {
-                            850: '#1f1f22',
-                            950: '#09090b',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .glass-panel {
-            background: rgba(9, 9, 11, 0.8);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* ===== WINDOWS 2000 DESIGN SYSTEM ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
-        .text-gradient-bw {
-            background: linear-gradient(to right, #ffffff, #71717a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+
+        :root {
+            --win-bg: #d4d0c8;
+            --win-blue: #000080;
+            --win-blue-light: #1084d0;
+            --win-titlebar-start: #000080;
+            --win-titlebar-end: #1084d0;
+            --win-white: #ffffff;
+            --win-black: #000000;
+            --win-text: #000000;
+            --win-gray-dark: #808080;
+            --win-gray-mid: #a0a0a0;
+            --win-border-light: #ffffff;
+            --win-border-dark: #808080;
+            --win-border-darker: #404040;
+            --win-highlight: #0a246a;
+            --win-highlight-text: #ffffff;
+            --win-btn-face: #d4d0c8;
+            --win-link: #000080;
         }
-        .phone-card-overlay {
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0) 100%);
+
+        body {
+            background-color: var(--win-bg);
+            font-family: 'Tahoma', 'MS Sans Serif', Arial, sans-serif;
+            font-size: 11px;
+            color: var(--win-text);
+            min-height: 100vh;
+        }
+
+        /* ===== BEVELED BORDER UTILITY ===== */
+        .raised {
+            border: 2px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+        }
+        .raised-outer {
+            border: 2px solid;
+            border-color: var(--win-btn-face) var(--win-black) var(--win-black) var(--win-btn-face);
+            box-shadow: inset 1px 1px 0 var(--win-border-light), inset -1px -1px 0 var(--win-border-dark);
+        }
+        .sunken {
+            border: 2px solid;
+            border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+            box-shadow: inset 1px 1px 0 var(--win-border-darker);
+        }
+        .field-sunken {
+            border: 2px solid;
+            border-color: var(--win-border-darker) var(--win-border-light) var(--win-border-light) var(--win-border-darker);
+            background: var(--win-white);
+        }
+
+        /* ===== WIN2K WINDOW ===== */
+        .win-window {
+            background: var(--win-bg);
+            border: 2px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+            box-shadow: 2px 2px 0 var(--win-black);
+        }
+
+        .win-titlebar {
+            background: linear-gradient(to right, var(--win-titlebar-start), var(--win-titlebar-end));
+            padding: 3px 4px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+
+        .win-titlebar-title {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            color: var(--win-white);
+            font-weight: bold;
+            font-size: 11px;
+        }
+
+        .win-titlebar-title img {
+            width: 16px;
+            height: 16px;
+        }
+
+        .win-titlebar-btns {
+            display: flex;
+            gap: 2px;
+        }
+
+        .win-tb-btn {
+            width: 16px;
+            height: 14px;
+            background: var(--win-btn-face);
+            border: 1px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 9px;
+            font-weight: bold;
+            color: var(--win-black);
+            font-family: 'Tahoma', Arial, sans-serif;
+        }
+
+        .win-tb-btn:hover {
+            background: #e8e8e4;
+        }
+
+        .win-tb-btn.close {
+            font-size: 10px;
+        }
+
+        .win-content {
+            padding: 8px;
+        }
+
+        /* ===== WIN2K BUTTON ===== */
+        .win-btn {
+            background: var(--win-btn-face);
+            border: 2px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+            box-shadow: 1px 1px 0 var(--win-black);
+            padding: 4px 16px;
+            font-family: 'Tahoma', Arial, sans-serif;
+            font-size: 11px;
+            cursor: pointer;
+            color: var(--win-black);
+            min-width: 75px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .win-btn:hover {
+            background: #e8e4dc;
+        }
+
+        .win-btn:active {
+            border-color: var(--win-border-darker) var(--win-border-light) var(--win-border-light) var(--win-border-darker);
+            box-shadow: none;
+        }
+
+        .win-btn-primary {
+            background: var(--win-btn-face);
+            border: 2px solid var(--win-black);
+            box-shadow: 1px 1px 0 var(--win-black), inset 1px 1px 0 var(--win-border-light), inset -1px -1px 0 var(--win-border-dark);
+            font-weight: bold;
+        }
+
+        /* ===== TASKBAR ===== */
+        #taskbar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: var(--win-btn-face);
+            border-top: 2px solid var(--win-border-light);
+            display: flex;
+            align-items: center;
+            z-index: 1000;
+            padding: 0 2px;
+            gap: 4px;
+        }
+
+        .start-btn {
+            background: var(--win-btn-face);
+            border: 2px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+            height: 22px;
+            padding: 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: bold;
+            font-size: 11px;
+            cursor: pointer;
+            font-family: 'Tahoma', Arial, sans-serif;
+        }
+
+        .start-btn-icon {
+            font-size: 14px;
+        }
+
+        .taskbar-sep {
+            width: 2px;
+            height: 22px;
+            border-left: 1px solid var(--win-border-dark);
+            border-right: 1px solid var(--win-border-light);
+            margin: 0 2px;
+        }
+
+        .taskbar-clock {
+            margin-left: auto;
+            border: 1px solid;
+            border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+            padding: 2px 8px;
+            font-size: 11px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .taskbar-task {
+            height: 22px;
+            padding: 0 8px;
+            border: 2px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+            font-size: 11px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            font-family: 'Tahoma', Arial, sans-serif;
+            background: var(--win-btn-face);
+        }
+
+        /* ===== MENUBAR ===== */
+        .win-menubar {
+            background: var(--win-bg);
+            border-bottom: 1px solid var(--win-border-dark);
+            padding: 2px 4px;
+            display: flex;
+            gap: 0;
+        }
+
+        .win-menu-item {
+            padding: 2px 8px;
+            font-size: 11px;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--win-black);
+        }
+
+        .win-menu-item:hover {
+            background: var(--win-highlight);
+            color: var(--win-highlight-text);
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        #desktop {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 8px 8px 40px 8px;
+        }
+
+        /* ===== STATUS BAR ===== */
+        .win-statusbar {
+            display: flex;
+            border-top: 1px solid var(--win-border-dark);
+            margin-top: 4px;
+        }
+
+        .win-status-pane {
+            padding: 2px 6px;
+            font-size: 10px;
+            border: 1px solid;
+            border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+            flex: 1;
+        }
+
+        /* ===== SECTION HEADERS ===== */
+        .section-header {
+            background: linear-gradient(to right, var(--win-titlebar-start), var(--win-titlebar-end));
+            color: var(--win-white);
+            padding: 3px 8px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        /* ===== HYPERLINKS ===== */
+        a {
+            color: var(--win-link);
+            text-decoration: underline;
+        }
+        a:hover {
+            color: #cc0000;
+        }
+
+        /* ===== SCROLLABLE CONTENT ===== */
+        .win-scroll-area {
+            border: 2px inset;
+            overflow-y: auto;
+            background: var(--win-white);
+        }
+
+        /* ===== PROGRESS BAR (decorative) ===== */
+        .win-progress-container {
+            height: 16px;
+            border: 2px solid;
+            border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+            background: var(--win-white);
+            overflow: hidden;
+        }
+
+        .win-progress-fill {
+            height: 100%;
+            background: repeating-linear-gradient(
+                to right,
+                var(--win-blue) 0px,
+                var(--win-blue) 10px,
+                var(--win-bg) 10px,
+                var(--win-bg) 12px
+            );
+        }
+
+        /* ===== TABLE STYLES ===== */
+        .win-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 11px;
+        }
+
+        .win-table th {
+            background: var(--win-btn-face);
+            border: 1px solid;
+            border-color: var(--win-border-light) var(--win-border-dark) var(--win-border-dark) var(--win-border-light);
+            padding: 3px 8px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .win-table td {
+            border: 1px solid var(--win-border-dark);
+            padding: 3px 8px;
+            background: var(--win-white);
+        }
+
+        .win-table tr:hover td {
+            background: var(--win-highlight);
+            color: var(--win-highlight-text);
+        }
+
+        /* ===== PHONE CARD ===== */
+        .phone-card {
+            background: var(--win-white);
+            border: 2px solid;
+            border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+            overflow: hidden;
+        }
+
+        .phone-card-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 2px solid var(--win-border-dark);
+        }
+
+        .phone-card-body {
+            padding: 6px 8px;
+        }
+
+        .phone-card-brand {
+            font-weight: bold;
+            font-size: 13px;
+            color: var(--win-blue);
+            display: block;
+        }
+
+        .phone-card-desc {
+            font-size: 10px;
+            color: #444;
+        }
+
+        /* ===== ICON GRID ===== */
+        .desktop-icon {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px;
+            cursor: pointer;
+            width: 80px;
+            text-align: center;
+        }
+
+        .desktop-icon:hover .icon-label,
+        .desktop-icon:focus .icon-label {
+            background: var(--win-highlight);
+            color: var(--win-highlight-text);
+        }
+
+        .desktop-icon img {
+            width: 32px;
+            height: 32px;
+            image-rendering: pixelated;
+        }
+
+        .icon-label {
+            font-size: 11px;
+            padding: 1px 3px;
+            word-break: break-word;
+            line-height: 1.2;
+        }
+
+        /* ===== REVIEW CARD ===== */
+        .review-card {
+            background: var(--win-white);
+            border: 2px solid;
+            border-color: var(--win-border-dark) var(--win-border-light) var(--win-border-light) var(--win-border-dark);
+            padding: 8px;
+            font-size: 11px;
+        }
+
+        .review-stars {
+            color: #d0a000;
+            font-size: 13px;
+            letter-spacing: 1px;
+        }
+
+        .reviewer-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--win-blue);
+            color: var(--win-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            border: 2px solid var(--win-border-dark);
+            flex-shrink: 0;
+        }
+
+        /* ===== MARQUEE ===== */
+        .win-marquee {
+            background: var(--win-white);
+            border: 2px inset;
+            padding: 2px 0;
+            font-size: 11px;
+            overflow: hidden;
+        }
+
+        /* ===== NOTIFICATION ===== */
+        .win-balloon {
+            background: #ffffc0;
+            border: 1px solid var(--win-border-dark);
+            box-shadow: 2px 2px 0 var(--win-black);
+            padding: 6px 8px;
+            font-size: 11px;
+            max-width: 200px;
+            position: relative;
+        }
+
+        .win-balloon::before {
+            content: '!';
+            font-weight: bold;
+            color: var(--win-blue);
+            margin-right: 4px;
+        }
+
+        /* ===== LOADING BAR ANIMATION ===== */
+        @keyframes scroll-progress {
+            0% { background-position: 0 0; }
+            100% { background-position: 120px 0; }
+        }
+
+        .win-progress-fill-anim {
+            height: 100%;
+            background: repeating-linear-gradient(
+                to right,
+                var(--win-blue) 0px,
+                var(--win-blue-light) 8px,
+                var(--win-blue) 12px
+            );
+            background-size: 120px 100%;
+            animation: scroll-progress 0.8s linear infinite;
+        }
+
+        /* ===== FOOTER AREA ===== */
+        .win-footer-bar {
+            background: var(--win-btn-face);
+            border: 2px solid;
+            border-color: var(--win-border-light) var(--win-border-darker) var(--win-border-darker) var(--win-border-light);
+            padding: 4px 8px;
+            font-size: 10px;
+            color: #444;
+            text-align: center;
+            margin-top: 8px;
+        }
+
+        /* ===== SEPARATOR ===== */
+        .win-hr {
+            border: none;
+            border-top: 1px solid var(--win-border-dark);
+            border-bottom: 1px solid var(--win-border-light);
+            margin: 4px 0;
+        }
+
+        /* === GRID HELPERS === */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; }
+        .flex-row { display: flex; gap: 6px; }
+        .flex-col { display: flex; flex-direction: column; gap: 6px; }
+        .flex-1 { flex: 1; }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 700px) {
+            .grid-3 { grid-template-columns: 1fr; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .flex-row { flex-direction: column; }
+            .hide-mobile { display: none !important; }
+        }
+
+        @media (max-width: 480px) {
+            #desktop { padding: 4px 4px 40px 4px; }
         }
     </style>
 </head>
-<body class="bg-black text-white font-sans antialiased selection:bg-white selection:text-black flex flex-col min-h-screen">
+<body>
 
-    <!-- Header -->
-    <header class="fixed top-0 w-full z-50 glass-panel">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <a href="#" class="flex items-center gap-2 group">
-                <span class="text-2xl font-black tracking-widest text-white uppercase">Kensha<span class="font-light text-zinc-400">Mobiles</span></span>
-            </a>
-            
-            <div class="flex items-center gap-4">
-                <a href="https://www.instagram.com/kensha_mobiles_gangadham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center justify-center w-10 h-10 rounded-full border border-zinc-800 hover:bg-white hover:text-black transition-all">
-                    <i class="fab fa-instagram text-lg"></i>
-                </a>
-                <a href="https://wa.me/918983067267" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-white hover:bg-zinc-200 text-black px-5 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-white/10">
-                    <i class="fab fa-whatsapp text-lg"></i>
-                    <span>WhatsApp</span>
-                </a>
+<!-- ===== TASKBAR ===== -->
+<div id="taskbar">
+    <button class="start-btn">
+        <span class="start-btn-icon">🪟</span>
+        <strong>Start</strong>
+    </button>
+    <div class="taskbar-sep"></div>
+    <div class="taskbar-task">
+        <i class="fas fa-mobile-alt" style="font-size:12px;color:var(--win-blue);"></i>
+        Kensha Mobiles - Home
+    </div>
+    <div class="taskbar-sep"></div>
+    <div class="taskbar-task hide-mobile">
+        <i class="fab fa-whatsapp" style="font-size:12px;color:green;"></i>
+        WhatsApp
+    </div>
+    <div class="taskbar-clock" id="taskbar-clock">12:00 PM</div>
+</div>
+
+<div id="desktop">
+
+<!-- ===== ADDRESS BAR / NAV ===== -->
+<div class="win-window" style="margin-bottom:6px;">
+    <div class="win-titlebar">
+        <div class="win-titlebar-title">
+            <i class="fas fa-mobile-alt" style="font-size:12px;"></i>
+            Kensha Mobiles - Gangadham | Premium Tech Showroom
+        </div>
+        <div class="win-titlebar-btns">
+            <div class="win-tb-btn">_</div>
+            <div class="win-tb-btn">□</div>
+            <div class="win-tb-btn close">✕</div>
+        </div>
+    </div>
+    <div class="win-menubar">
+        <a href="#" class="win-menu-item">File</a>
+        <a href="#" class="win-menu-item">Edit</a>
+        <a href="#" class="win-menu-item">View</a>
+        <a href="#" class="win-menu-item">Favorites</a>
+        <a href="#" class="win-menu-item">Tools</a>
+        <a href="#" class="win-menu-item">Help</a>
+    </div>
+    <div style="background:var(--win-bg); padding:2px 4px; display:flex; gap:4px; align-items:center; border-bottom:1px solid var(--win-border-dark);">
+        <a href="win-btn" class="win-btn" style="min-width:auto;padding:2px 10px;font-size:11px;">&#9664; Back</a>
+        <a href="#" class="win-btn" style="min-width:auto;padding:2px 10px;font-size:11px;">&#9654; Fwd</a>
+        <a href="#" class="win-btn" style="min-width:auto;padding:2px 10px;font-size:11px;">&#9679; Stop</a>
+        <a href="#" class="win-btn" style="min-width:auto;padding:2px 10px;font-size:11px;">&#10227; Refresh</a>
+        <a href="#" class="win-btn" style="min-width:auto;padding:2px 10px;font-size:11px;">&#127968; Home</a>
+        <div style="display:flex;align-items:center;gap:4px;flex:1;">
+            <label style="font-size:11px;white-space:nowrap;">Address:</label>
+            <div class="field-sunken" style="flex:1;padding:2px 6px;font-size:11px;background:var(--win-white);">
+                http://www.kenshamobiles.com/gangadham/
             </div>
+            <a href="#" class="win-btn" style="min-width:auto;padding:2px 12px;font-size:11px;">Go</a>
         </div>
-    </header>
+    </div>
+    <div style="padding:2px 4px; display:flex; gap:4px; border-bottom:1px solid var(--win-border-dark);">
+        <a href="#hero" class="win-btn" style="min-width:auto;padding:2px 12px;font-size:11px;">&#9679; Home</a>
+        <a href="#phones" class="win-btn" style="min-width:auto;padding:2px 12px;font-size:11px;">&#128241; Phones</a>
+        <a href="#reviews" class="win-btn" style="min-width:auto;padding:2px 12px;font-size:11px;">&#9733; Reviews</a>
+        <a href="#contact" class="win-btn" style="min-width:auto;padding:2px 12px;font-size:11px;">&#128222; Contact</a>
+        <a href="https://wa.me/918983067267" target="_blank" rel="noopener" class="win-btn win-btn-primary" style="min-width:auto;padding:2px 12px;font-size:11px;color:green;">
+            <i class="fab fa-whatsapp"></i> WhatsApp Us
+        </a>
+        <a href="https://www.instagram.com/kensha_mobiles_gangadham" target="_blank" rel="noopener" class="win-btn" style="min-width:auto;padding:2px 12px;font-size:11px;">
+            <i class="fab fa-instagram"></i> Instagram
+        </a>
+    </div>
+</div>
 
-    <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden border-b border-zinc-900">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.05)_0%,transparent_60%)]"></div>
+<!-- ===== ANNOUNCEMENT MARQUEE ===== -->
+<div class="win-marquee" style="margin-bottom:6px;">
+    <marquee behavior="scroll" direction="left" scrollamount="3">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        ⚡ NEW ARRIVALS: iPhone 17 Pro Max &nbsp;|&nbsp; Samsung Galaxy S26 Ultra &nbsp;|&nbsp; Google Pixel 10 &nbsp;|&nbsp; OnePlus 14 &nbsp;|&nbsp;
+        ✅ 100% Genuine Products &nbsp;|&nbsp; Best Prices in Pune &nbsp;|&nbsp; 
+        📞 Call Now: +91 89830 67267 &nbsp;|&nbsp; 🕐 Open Daily: 11:00 AM – 9:30 PM &nbsp;|&nbsp;
+        ⭐ 4.9/5 Google Rating &nbsp;|&nbsp; 1000+ Happy Customers &nbsp;|&nbsp;
+        📍 Shop 12, Solitaire Premier Tower, Gangadham Chowk, Pune
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    </marquee>
+</div>
+
+<!-- ===== HERO SECTION ===== -->
+<div id="hero" class="win-window" style="margin-bottom:6px;">
+    <div class="win-titlebar">
+        <div class="win-titlebar-title">
+            <i class="fas fa-home" style="font-size:12px;"></i>
+            Welcome to Kensha Mobiles — Gangadham, Pune
         </div>
-
-        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="max-w-5xl mx-auto">
-                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-zinc-800 bg-zinc-900/50 text-zinc-300 text-xs sm:text-sm font-medium mb-8 tracking-wide uppercase">
-                    <i class="fas fa-star text-yellow-500"></i>
-                    <span>Trusted across Pune & Beyond • 4.9 Star Google Rating</span>
-                </div>
-                
-                <h1 class="text-5xl md:text-6xl lg:text-7xl font-black tracking-tighter mb-6 leading-tight uppercase">
-                    Every Brand.<br>
-                    <span class="text-gradient-bw">Every Model.</span><br>
-                    One Destination.
-                </h1>
-                
-                <p class="text-lg lg:text-xl text-zinc-400 mb-10 leading-relaxed max-w-2xl mx-auto font-light">
-                    Experience the absolute latest in smartphone technology. From the newest Apple innovations to the cutting-edge Samsung S-Series. Best prices, 100% genuine products.
-                </p>
-                
-                <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                    <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+12,+Solitaire+Premier+Tower,+Gangadham+Chowk,+Katraj+-+Kondhwa+Road,+Phase+1,+Ganga+Dham,+Pune,+Maharashtra+411037" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-2 bg-white text-black px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-zinc-200 transition-all">
-                        <i class="fas fa-map-marker-alt"></i>
-                        Visit Store
-                    </a>
-                    <a href="tel:+918983067267" class="inline-flex justify-center items-center gap-2 bg-transparent text-white border border-zinc-700 px-8 py-4 rounded-full font-bold text-sm uppercase tracking-widest hover:border-white transition-all">
-                        <i class="fas fa-phone-alt"></i>
-                        Call Now
-                    </a>
-                </div>
-            </div>
+        <div class="win-titlebar-btns">
+            <div class="win-tb-btn">_</div>
+            <div class="win-tb-btn">□</div>
+            <div class="win-tb-btn close">✕</div>
         </div>
-    </section>
-
-    <!-- Flagship Showcase Section -->
-    <section class="py-24 relative bg-black">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-                <div class="max-w-2xl">
-                    <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter mb-4">The Latest & Greatest</h2>
-                    <p class="text-zinc-400 leading-relaxed">
-                        We stock the most highly anticipated devices. Feel them in your hands before you buy.
+    </div>
+    <div class="win-content">
+        <div class="flex-row" style="align-items:flex-start;">
+            <!-- Left: Main message -->
+            <div style="flex:2;">
+                <div style="background:var(--win-white); border:2px inset; padding:16px; margin-bottom:8px;">
+                    <div style="background:var(--win-btn-face); border:1px solid var(--win-border-dark); padding:4px 8px; margin-bottom:10px; display:inline-flex; align-items:center; gap:6px; font-size:11px;">
+                        <span style="color:gold;">★</span>
+                        <strong>Trusted across Pune &amp; Beyond</strong> &nbsp;·&nbsp; 4.9 Star Google Rating
+                    </div>
+                    <h1 style="font-size:28px; font-weight:bold; color:var(--win-black); line-height:1.2; margin-bottom:8px;">
+                        Every Brand.<br>
+                        Every Model.<br>
+                        <span style="color:var(--win-blue);">One Destination.</span>
+                    </h1>
+                    <p style="font-size:12px; color:#333; line-height:1.6; margin-bottom:12px; max-width:480px;">
+                        Experience the absolute latest in smartphone technology. From the newest Apple innovations to the cutting-edge Samsung S-Series. Best prices, 100% genuine products.
                     </p>
+                    <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                        <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+12,+Solitaire+Premier+Tower,+Gangadham+Chowk,+Katraj+-+Kondhwa+Road,+Phase+1,+Ganga+Dham,+Pune,+Maharashtra+411037" target="_blank" rel="noopener noreferrer" class="win-btn win-btn-primary">
+                            <i class="fas fa-map-marker-alt"></i> Get Directions
+                        </a>
+                        <a href="tel:+918983067267" class="win-btn">
+                            <i class="fas fa-phone-alt"></i> Call Now
+                        </a>
+                        <a href="https://wa.me/918983067267" target="_blank" rel="noopener" class="win-btn" style="color:green;">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
+                        </a>
+                    </div>
                 </div>
+
+                <!-- Stats as a Win2K table -->
+                <table class="win-table">
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Value</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Google Rating</strong></td>
+                            <td><span style="color:gold;">★★★★★</span> 4.9 / 5.0</td>
+                            <td>Verified Google Reviews</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5-Star Reviews</strong></td>
+                            <td>98%</td>
+                            <td>Customer satisfaction</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Genuine Products</strong></td>
+                            <td>100%</td>
+                            <td>All brands, all models</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Happy Customers</strong></td>
+                            <td>1,000+</td>
+                            <td>Pune &amp; beyond</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Store Hours</strong></td>
+                            <td>11:00 AM – 9:30 PM</td>
+                            <td>Open Daily</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
 
-            <!-- Phones Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Apple / iPhone 17 Pro Max Vibe -->
-                <div class="relative h-[450px] rounded-3xl overflow-hidden group border border-zinc-800">
-                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&q=80&w=800" alt="Latest iPhone Pro Max" class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0">
-                    <div class="absolute inset-0 phone-card-overlay"></div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <h3 class="text-3xl font-black mb-1 uppercase tracking-tight">Apple</h3>
-                        <p class="text-zinc-300 font-medium">iPhone 17 Pro Max & Series</p>
+            <!-- Right: Sidebar dialogs -->
+            <div style="flex:1; display:flex; flex-direction:column; gap:6px; min-width:180px;">
+                <!-- System info dialog style -->
+                <div class="win-window">
+                    <div class="win-titlebar" style="background:linear-gradient(to right,#336,#669);">
+                        <div class="win-titlebar-title">
+                            <i class="fas fa-info-circle" style="font-size:11px;"></i> Store Info
+                        </div>
+                    </div>
+                    <div class="win-content">
+                        <div style="display:flex; gap:8px; align-items:center; margin-bottom:6px;">
+                            <div style="font-size:32px;">📱</div>
+                            <div>
+                                <strong>Kensha Mobiles</strong><br>
+                                <span style="font-size:10px;">Gangadham, Pune</span>
+                            </div>
+                        </div>
+                        <hr class="win-hr">
+                        <div style="font-size:10px; line-height:1.8;">
+                            <div><strong>Location:</strong> Gangadham Chowk, Pune 411037</div>
+                            <div><strong>Phone:</strong> +91 89830 67267</div>
+                            <div><strong>Hours:</strong> 11 AM – 9:30 PM</div>
+                        </div>
+                        <hr class="win-hr">
+                        <div style="display:flex; justify-content:flex-end; gap:4px; margin-top:6px;">
+                            <a href="tel:+918983067267" class="win-btn" style="font-size:10px; padding:2px 10px;">Call</a>
+                            <a href="https://wa.me/918983067267" target="_blank" rel="noopener" class="win-btn win-btn-primary" style="font-size:10px; padding:2px 10px;">WhatsApp</a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Samsung / S26 Ultra Vibe -->
-                <div class="relative h-[450px] rounded-3xl overflow-hidden group border border-zinc-800">
-                    <img src="https://images.unsplash.com/photo-1649859398021-afbfe80e83b9?auto=format&fit=crop&q=80&w=800" alt="Samsung Galaxy S26 Ultra" class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0">
-                    <div class="absolute inset-0 phone-card-overlay"></div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <h3 class="text-3xl font-black mb-1 uppercase tracking-tight">Samsung</h3>
-                        <p class="text-zinc-300 font-medium">Galaxy S26 Ultra & Foldables</p>
+                <!-- Progress bar "Stock Level" dialog -->
+                <div class="win-window">
+                    <div class="win-titlebar" style="background:linear-gradient(to right,#004400,#008800);">
+                        <div class="win-titlebar-title">
+                            <i class="fas fa-check-circle" style="font-size:11px;"></i> Stock Status
+                        </div>
+                    </div>
+                    <div class="win-content" style="font-size:11px;">
+                        <div style="margin-bottom:6px;">
+                            <div style="margin-bottom:3px;">iPhone 17 Series — <strong>In Stock</strong></div>
+                            <div class="win-progress-container"><div class="win-progress-fill" style="width:90%;"></div></div>
+                        </div>
+                        <div style="margin-bottom:6px;">
+                            <div style="margin-bottom:3px;">Samsung S26 Ultra — <strong>In Stock</strong></div>
+                            <div class="win-progress-container"><div class="win-progress-fill" style="width:80%;"></div></div>
+                        </div>
+                        <div style="margin-bottom:6px;">
+                            <div style="margin-bottom:3px;">Google Pixel / Others — <strong>Available</strong></div>
+                            <div class="win-progress-container"><div class="win-progress-fill" style="width:70%;"></div></div>
+                        </div>
+                        <div style="margin-top:8px;">
+                            <div style="font-size:10px; margin-bottom:3px;">Loading new arrivals...</div>
+                            <div class="win-progress-container" style="height:14px;">
+                                <div class="win-progress-fill-anim" style="width:100%;"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Other Premiums -->
-                <div class="relative h-[450px] rounded-3xl overflow-hidden group border border-zinc-800 md:col-span-2 lg:col-span-1">
-                    <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?auto=format&fit=crop&q=80&w=800" alt="Premium Androids" class="absolute inset-0 w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105 group-hover:grayscale-0">
-                    <div class="absolute inset-0 phone-card-overlay"></div>
-                    <div class="absolute bottom-0 left-0 p-8 w-full">
-                        <h3 class="text-3xl font-black mb-1 uppercase tracking-tight">Premium Androids</h3>
-                        <p class="text-zinc-300 font-medium">Google Pixel, OnePlus, Vivo</p>
-                    </div>
+                <!-- Balloon notification -->
+                <div class="win-balloon">
+                    <strong>New Arrivals!</strong><br>
+                    iPhone 17 Pro Max &amp; Samsung S26 Ultra now available. Ask staff for demo!
                 </div>
-            </div>
-            
-            <div class="mt-8 flex flex-wrap gap-3">
-                <span class="px-4 py-2 rounded-full border border-zinc-800 text-xs font-bold uppercase tracking-widest text-zinc-400">Also Available:</span>
-                <span class="px-4 py-2 rounded-full border border-zinc-800 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-default">Oppo</span>
-                <span class="px-4 py-2 rounded-full border border-zinc-800 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-default">Xiaomi</span>
-                <span class="px-4 py-2 rounded-full border border-zinc-800 text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-colors cursor-default">Nothing</span>
             </div>
         </div>
-    </section>
 
-    <!-- Instagram / Social Redirection Section -->
-    <section class="py-24 bg-zinc-950 border-t border-zinc-900 relative overflow-hidden">
-        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <div class="w-20 h-20 mx-auto rounded-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 p-[2px] mb-8 shadow-2xl shadow-purple-500/20">
-                <div class="w-full h-full bg-black rounded-full flex items-center justify-center">
-                    <i class="fab fa-instagram text-3xl text-white"></i>
+        <div class="win-statusbar" style="margin-top:6px;">
+            <div class="win-status-pane">✅ Connection: Secure</div>
+            <div class="win-status-pane">📍 Gangadham Chowk, Pune, Maharashtra</div>
+            <div class="win-status-pane">Internet zone</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== PHONES SECTION ===== -->
+<div id="phones" class="win-window" style="margin-bottom:6px;">
+    <div class="win-titlebar">
+        <div class="win-titlebar-title">
+            <i class="fas fa-mobile-alt" style="font-size:12px;"></i>
+            The Latest &amp; Greatest — Flagship Devices
+        </div>
+        <div class="win-titlebar-btns">
+            <div class="win-tb-btn">_</div>
+            <div class="win-tb-btn">□</div>
+            <div class="win-tb-btn close">✕</div>
+        </div>
+    </div>
+    <div class="win-content">
+        <div style="margin-bottom:6px; font-size:11px; color:#333;">
+            We stock the most highly anticipated devices. Feel them in your hands before you buy. Click a device to enquire.
+        </div>
+
+        <!-- Phone Cards Grid -->
+        <div class="grid-3" style="margin-bottom:8px;">
+            <!-- Apple -->
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?auto=format&fit=crop&q=80&w=600" alt="Latest iPhone Pro Max" class="phone-card-img">
+                <div class="phone-card-body">
+                    <div style="background:var(--win-btn-face); border-bottom:1px solid var(--win-border-dark); padding:3px 6px; margin:-6px -8px 6px -8px; font-size:11px; font-weight:bold; color:var(--win-black);">
+                        Apple Inc.
+                    </div>
+                    <span class="phone-card-brand">Apple iPhone</span>
+                    <span class="phone-card-desc">iPhone 17 Pro Max &amp; Series</span>
+                    <div style="margin-top:6px; display:flex; gap:4px;">
+                        <a href="https://wa.me/918983067267" target="_blank" rel="noopener" class="win-btn win-btn-primary" style="font-size:10px; padding:2px 8px;">Enquire</a>
+                        <a href="tel:+918983067267" class="win-btn" style="font-size:10px; padding:2px 8px;">Call</a>
+                    </div>
                 </div>
             </div>
-            
-            <h2 class="text-4xl lg:text-6xl font-black uppercase tracking-tighter mb-6">Stay Updated Live</h2>
-            
-            <p class="text-zinc-400 text-lg mb-12 leading-relaxed max-w-2xl mx-auto font-light">
-                Follow our Instagram page for daily updates, unboxings, new arrivals, and exclusive showroom offers. Be the first to know when the latest models drop.
-            </p>
-            
-            <a href="https://www.instagram.com/kensha_mobiles_gangadham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="inline-flex justify-center items-center gap-3 bg-white text-black px-10 py-5 rounded-full font-bold text-sm uppercase tracking-widest hover:bg-zinc-200 transition-all shadow-xl shadow-white/5">
-                <i class="fab fa-instagram text-lg"></i>
-                Follow @kensha_mobiles_gangadham
-            </a>
-        </div>
-    </section>
 
-    <!-- Reviews Section -->
-    <section class="py-24 bg-black border-t border-zinc-900 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <div class="flex justify-center text-yellow-500 text-3xl mb-4 gap-1">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
+            <!-- Samsung -->
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1649859398021-afbfe80e83b9?auto=format&fit=crop&q=80&w=600" alt="Samsung Galaxy S26 Ultra" class="phone-card-img">
+                <div class="phone-card-body">
+                    <div style="background:var(--win-btn-face); border-bottom:1px solid var(--win-border-dark); padding:3px 6px; margin:-6px -8px 6px -8px; font-size:11px; font-weight:bold; color:var(--win-black);">
+                        Samsung Electronics
+                    </div>
+                    <span class="phone-card-brand">Samsung Galaxy</span>
+                    <span class="phone-card-desc">S26 Ultra &amp; Foldables</span>
+                    <div style="margin-top:6px; display:flex; gap:4px;">
+                        <a href="https://wa.me/918983067267" target="_blank" rel="noopener" class="win-btn win-btn-primary" style="font-size:10px; padding:2px 8px;">Enquire</a>
+                        <a href="tel:+918983067267" class="win-btn" style="font-size:10px; padding:2px 8px;">Call</a>
+                    </div>
                 </div>
-                <h2 class="text-3xl lg:text-5xl font-black uppercase tracking-tighter mb-4">Trusted across Pune & Beyond</h2>
-                <p class="text-zinc-400 max-w-2xl mx-auto text-lg">
-                    4.9/5 Average Google Rating. We let our customers across Pune speak for our genuinity and premium service quality.
+            </div>
+
+            <!-- Others -->
+            <div class="phone-card">
+                <img src="https://images.unsplash.com/photo-1678911820864-e2c567c655d7?auto=format&fit=crop&q=80&w=600" alt="Premium Android Phones" class="phone-card-img">
+                <div class="phone-card-body">
+                    <div style="background:var(--win-btn-face); border-bottom:1px solid var(--win-border-dark); padding:3px 6px; margin:-6px -8px 6px -8px; font-size:11px; font-weight:bold; color:var(--win-black);">
+                        Premium Androids
+                    </div>
+                    <span class="phone-card-brand">Google · OnePlus · Vivo</span>
+                    <span class="phone-card-desc">Pixel, OnePlus, Vivo &amp; more</span>
+                    <div style="margin-top:6px; display:flex; gap:4px;">
+                        <a href="https://wa.me/918983067267" target="_blank" rel="noopener" class="win-btn win-btn-primary" style="font-size:10px; padding:2px 8px;">Enquire</a>
+                        <a href="tel:+918983067267" class="win-btn" style="font-size:10px; padding:2px 8px;">Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Also Available as a Win2K Listbox -->
+        <div style="display:flex; gap:8px; align-items:flex-start;">
+            <div style="font-size:11px; font-weight:bold; white-space:nowrap; padding-top:4px;">Also Available:</div>
+            <div class="field-sunken" style="flex:1; padding:4px; display:flex; flex-wrap:wrap; gap:2px;">
+                <span style="background:var(--win-highlight); color:var(--win-white); padding:2px 10px; font-size:11px; cursor:pointer;">Oppo</span>
+                <span style="padding:2px 10px; font-size:11px; cursor:pointer;" onmouseover="this.style.background='#0a246a';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color=''">Xiaomi</span>
+                <span style="padding:2px 10px; font-size:11px; cursor:pointer;" onmouseover="this.style.background='#0a246a';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color=''">Nothing</span>
+                <span style="padding:2px 10px; font-size:11px; cursor:pointer;" onmouseover="this.style.background='#0a246a';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color=''">Realme</span>
+                <span style="padding:2px 10px; font-size:11px; cursor:pointer;" onmouseover="this.style.background='#0a246a';this.style.color='#fff'" onmouseout="this.style.background='';this.style.color=''">Motorola</span>
+            </div>
+        </div>
+
+        <div class="win-statusbar" style="margin-top:6px;">
+            <div class="win-status-pane">3 products shown</div>
+            <div class="win-status-pane">All stock verified genuine</div>
+            <div class="win-status-pane">Contact for pricing</div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== INSTAGRAM SECTION ===== -->
+<div class="win-window" style="margin-bottom:6px;">
+    <div class="win-titlebar" style="background:linear-gradient(to right,#833ab4,#fd1d1d,#fcb045);">
+        <div class="win-titlebar-title">
+            <i class="fab fa-instagram" style="font-size:12px;"></i>
+            Stay Updated Live — @kensha_mobiles_gangadham
+        </div>
+        <div class="win-titlebar-btns">
+            <div class="win-tb-btn">_</div>
+            <div class="win-tb-btn">□</div>
+            <div class="win-tb-btn close">✕</div>
+        </div>
+    </div>
+    <div class="win-content">
+        <div style="display:flex; gap:12px; align-items:center;">
+            <div style="width:64px; height:64px; border-radius:50%; background:linear-gradient(135deg,#fcb045,#fd1d1d,#833ab4); display:flex; align-items:center; justify-content:center; border:3px solid var(--win-border-dark); flex-shrink:0;">
+                <i class="fab fa-instagram" style="font-size:30px; color:white;"></i>
+            </div>
+            <div style="flex:1;">
+                <strong style="font-size:14px;">Follow Us on Instagram</strong>
+                <p style="font-size:11px; color:#333; margin:4px 0 8px 0; line-height:1.5;">
+                    Follow our Instagram page for daily updates, unboxings, new arrivals, and exclusive showroom offers. Be the first to know when the latest models drop.
                 </p>
+                <a href="https://www.instagram.com/kensha_mobiles_gangadham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="win-btn win-btn-primary" style="font-size:11px;">
+                    <i class="fab fa-instagram"></i> Follow @kensha_mobiles_gangadham
+                </a>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Review 1 -->
-                <div class="p-8 rounded-3xl border border-zinc-800 bg-zinc-950 flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-yellow-500 text-sm mb-4 gap-1">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="text-zinc-300 leading-relaxed italic mb-6">"Got my new iPhone here. Amazing service, very transparent pricing, and they even helped me safely transfer all my data from my old Android. Highly recommended!"</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-zinc-400">R</div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider">Rahul D.</p>
-                            <p class="text-xs text-zinc-500">Local Guide</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div class="p-8 rounded-3xl border border-zinc-800 bg-zinc-950 flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-yellow-500 text-sm mb-4 gap-1">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="text-zinc-300 leading-relaxed italic mb-6">"Best mobile shop in Pune. They have a huge variety and the staff is incredibly polite. I exchanged my old Samsung for the latest Ultra model at a great value."</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-zinc-400">S</div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider">Sneha P.</p>
-                            <p class="text-xs text-zinc-500">Verified Buyer</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div class="p-8 rounded-3xl border border-zinc-800 bg-zinc-950 flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-yellow-500 text-sm mb-4 gap-1">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="text-zinc-300 leading-relaxed italic mb-6">"100% genuine products. Bought accessories and a new phone. The owner is very knowledgeable and suggests the perfect device strictly according to your budget without pushing."</p>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <div class="w-10 h-10 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-zinc-400">A</div>
-                        <div>
-                            <p class="font-bold text-sm uppercase tracking-wider">Amit K.</p>
-                            <p class="text-xs text-zinc-500">Verified Buyer</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Trust Proportions -->
-            <div class="mt-12 flex flex-col md:flex-row items-center justify-center gap-8 text-center border-t border-zinc-900 pt-12">
-                <div>
-                    <span class="block text-4xl font-black mb-1">98%</span>
-                    <span class="text-zinc-400 text-sm uppercase tracking-widest">5-Star Reviews</span>
-                </div>
-                <div class="hidden md:block w-px h-12 bg-zinc-800"></div>
-                <div>
-                    <span class="block text-4xl font-black mb-1">100%</span>
-                    <span class="text-zinc-400 text-sm uppercase tracking-widest">Genuine Products</span>
-                </div>
-                <div class="hidden md:block w-px h-12 bg-zinc-800"></div>
-                <div>
-                    <span class="block text-4xl font-black mb-1">1000+</span>
-                    <span class="text-zinc-400 text-sm uppercase tracking-widest">Happy Customers</span>
-                </div>
+            <div class="win-balloon hide-mobile" style="max-width:160px; font-size:10px;">
+                <strong>New posts daily!</strong><br>
+                Unboxings, deals &amp; offers every day.
             </div>
         </div>
-    </section>
+    </div>
+</div>
 
-    <!-- Footer / Location Section -->
-    <footer class="bg-zinc-950 pt-20 pb-10 border-t border-zinc-900 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 mb-16">
-                
-                <!-- Visit Us -->
-                <div>
-                    <h3 class="text-2xl font-black mb-8 uppercase tracking-widest">Visit Showroom</h3>
-                    
-                    <div class="space-y-4">
-                        <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+12,+Solitaire+Premier+Tower,+Gangadham+Chowk,+Katraj+-+Kondhwa+Road,+Phase+1,+Ganga+Dham,+Pune,+Maharashtra+411037" target="_blank" rel="noopener noreferrer" class="flex items-start gap-4 p-6 rounded-2xl bg-black border border-zinc-800 hover:border-white transition-colors group">
-                            <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center shrink-0 group-hover:bg-white group-hover:text-black transition-colors">
-                                <i class="fas fa-map-marker-alt text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white mb-2 uppercase tracking-wide">Location</h4>
-                                <p class="text-zinc-400 text-sm leading-relaxed">
-                                    Shop 12, Solitaire Premier Tower, Sr No 578,<br>
-                                    Gangadham Chowk, Katraj - Kondhwa Road,<br>
-                                    Phase 1, Ganga Dham, Pune,<br>
-                                    Maharashtra 411037
-                                </p>
-                                <span class="text-white text-xs font-bold uppercase tracking-widest mt-4 inline-block border-b border-white pb-0.5">Get Directions &rarr;</span>
-                            </div>
-                        </a>
+<!-- ===== REVIEWS SECTION ===== -->
+<div id="reviews" class="win-window" style="margin-bottom:6px;">
+    <div class="win-titlebar">
+        <div class="win-titlebar-title">
+            <i class="fas fa-star" style="font-size:12px; color:gold;"></i>
+            Customer Reviews — 4.9/5 Google Rating
+        </div>
+        <div class="win-titlebar-btns">
+            <div class="win-tb-btn">_</div>
+            <div class="win-tb-btn">□</div>
+            <div class="win-tb-btn close">✕</div>
+        </div>
+    </div>
+    <div class="win-content">
+        <div style="text-align:center; margin-bottom:8px; padding:6px; background:var(--win-white); border:2px inset;">
+            <div class="review-stars">★★★★★</div>
+            <strong style="font-size:13px;">Trusted across Pune &amp; Beyond</strong>
+            <p style="font-size:11px; color:#444; margin-top:2px;">4.9/5 Average Google Rating. We let our customers speak for our genuine service quality.</p>
+        </div>
 
-                        <div class="flex items-start gap-4 p-6 rounded-2xl bg-black border border-zinc-800">
-                            <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center shrink-0">
-                                <i class="fas fa-clock text-xl"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-bold text-white mb-2 uppercase tracking-wide">Store Hours</h4>
-                                <p class="text-zinc-400 font-medium mb-1">Open Daily</p>
-                                <p class="text-white text-lg font-light">11:00 AM – 9:30 PM</p>
-                            </div>
-                        </div>
-                    </div>
+        <div class="grid-3" style="margin-bottom:8px;">
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div style="background:var(--win-btn-face); border-bottom:1px solid var(--win-border-dark); padding:3px 6px; margin:-8px -8px 8px -8px; font-size:10px;">
+                    Google Review
                 </div>
-
-                <!-- Contact Us -->
-                <div>
-                    <h3 class="text-2xl font-black mb-8 uppercase tracking-widest">Get in Touch</h3>
-                    
-                    <div class="space-y-4">
-                        <a href="tel:+918983067267" class="flex items-center gap-4 p-6 rounded-2xl bg-black border border-zinc-800 hover:border-white transition-colors">
-                            <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center shrink-0">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-1">Call Us</p>
-                                <p class="text-xl font-light text-white">+91 89830 67267</p>
-                            </div>
-                        </a>
-
-                        <a href="https://wa.me/918983067267" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-6 rounded-2xl bg-black border border-zinc-800 hover:border-white transition-colors">
-                            <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center shrink-0 text-[#25D366]">
-                                <i class="fab fa-whatsapp text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-1">Message Us</p>
-                                <p class="text-xl font-light text-white">WhatsApp Chat</p>
-                            </div>
-                        </a>
-
-                        <a href="https://www.instagram.com/kensha_mobiles_gangadham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 p-6 rounded-2xl bg-black border border-zinc-800 hover:border-white transition-colors">
-                            <div class="w-12 h-12 rounded-full border border-zinc-800 flex items-center justify-center shrink-0">
-                                <i class="fab fa-instagram text-xl"></i>
-                            </div>
-                            <div>
-                                <p class="text-xs text-zinc-500 uppercase tracking-widest font-bold mb-1">Follow Us</p>
-                                <p class="text-base font-light text-zinc-300">@kensha_mobiles_gangadham</p>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="pt-8 border-t border-zinc-900 text-center flex flex-col md:flex-row justify-between items-center gap-4">
-                <p class="text-zinc-600 text-xs font-medium uppercase tracking-widest">
-                    &copy; <script>document.write(new Date().getFullYear())</script> Kensha Mobiles. All rights reserved.
+                <div class="review-stars" style="margin-bottom:4px;">★★★★★</div>
+                <p style="font-size:11px; color:#333; line-height:1.5; margin-bottom:8px; font-style:italic;">
+                    &ldquo;Got my new iPhone here. Amazing service, very transparent pricing, and they even helped me safely transfer all my data from my old Android. Highly recommended!&rdquo;
                 </p>
-                <div class="text-xl font-black tracking-widest text-white opacity-20 uppercase">
-                    Kensha<span class="font-light">Mobiles</span>
+                <hr class="win-hr">
+                <div style="display:flex; align-items:center; gap:6px; margin-top:6px;">
+                    <div class="reviewer-avatar">R</div>
+                    <div>
+                        <strong style="font-size:11px;">Rahul D.</strong><br>
+                        <span style="font-size:10px; color:#666;">Local Guide</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div style="background:var(--win-btn-face); border-bottom:1px solid var(--win-border-dark); padding:3px 6px; margin:-8px -8px 8px -8px; font-size:10px;">
+                    Google Review
+                </div>
+                <div class="review-stars" style="margin-bottom:4px;">★★★★★</div>
+                <p style="font-size:11px; color:#333; line-height:1.5; margin-bottom:8px; font-style:italic;">
+                    &ldquo;Best mobile shop in Pune. They have a huge variety and the staff is incredibly polite. I exchanged my old Samsung for the latest Ultra model at a great value.&rdquo;
+                </p>
+                <hr class="win-hr">
+                <div style="display:flex; align-items:center; gap:6px; margin-top:6px;">
+                    <div class="reviewer-avatar" style="background:#660066;">S</div>
+                    <div>
+                        <strong style="font-size:11px;">Sneha P.</strong><br>
+                        <span style="font-size:10px; color:#666;">Verified Buyer</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div style="background:var(--win-btn-face); border-bottom:1px solid var(--win-border-dark); padding:3px 6px; margin:-8px -8px 8px -8px; font-size:10px;">
+                    Google Review
+                </div>
+                <div class="review-stars" style="margin-bottom:4px;">★★★★★</div>
+                <p style="font-size:11px; color:#333; line-height:1.5; margin-bottom:8px; font-style:italic;">
+                    &ldquo;100% genuine products. Bought accessories and a new phone. The owner is very knowledgeable and suggests the perfect device strictly according to your budget without pushing.&rdquo;
+                </p>
+                <hr class="win-hr">
+                <div style="display:flex; align-items:center; gap:6px; margin-top:6px;">
+                    <div class="reviewer-avatar" style="background:#004400;">A</div>
+                    <div>
+                        <strong style="font-size:11px;">Amit K.</strong><br>
+                        <span style="font-size:10px; color:#666;">Verified Buyer</span>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+
+        <!-- Stats table -->
+        <table class="win-table">
+            <thead>
+                <tr>
+                    <th>Achievement</th>
+                    <th>Value</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>5-Star Google Reviews</td>
+                    <td><strong>98%</strong></td>
+                    <td><span style="color:green;">● Active</span></td>
+                </tr>
+                <tr>
+                    <td>Genuine Products Guarantee</td>
+                    <td><strong>100%</strong></td>
+                    <td><span style="color:green;">● Verified</span></td>
+                </tr>
+                <tr>
+                    <td>Happy Customers</td>
+                    <td><strong>1,000+</strong></td>
+                    <td><span style="color:green;">● Growing</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- ===== CONTACT / FOOTER SECTION ===== -->
+<div id="contact" class="win-window" style="margin-bottom:6px;">
+    <div class="win-titlebar">
+        <div class="win-titlebar-title">
+            <i class="fas fa-address-book" style="font-size:12px;"></i>
+            Visit Showroom &amp; Get in Touch
+        </div>
+        <div class="win-titlebar-btns">
+            <div class="win-tb-btn">_</div>
+            <div class="win-tb-btn">□</div>
+            <div class="win-tb-btn close">✕</div>
+        </div>
+    </div>
+    <div class="win-content">
+        <div class="grid-2">
+            <!-- Left: Location -->
+            <div>
+                <div class="section-header" style="margin-bottom:6px;">
+                    <i class="fas fa-map-marker-alt"></i> Visit Showroom
+                </div>
+                <div style="background:var(--win-white); border:2px inset; padding:8px; margin-bottom:6px;">
+                    <div style="font-size:11px; line-height:1.8;">
+                        <div><strong>Shop 12, Solitaire Premier Tower</strong></div>
+                        <div>Sr No 578, Gangadham Chowk,</div>
+                        <div>Katraj - Kondhwa Road, Phase 1,</div>
+                        <div>Ganga Dham, Pune,</div>
+                        <div>Maharashtra 411037</div>
+                    </div>
+                    <hr class="win-hr" style="margin:8px 0;">
+                    <a href="https://www.google.com/maps/dir/?api=1&destination=Shop+12,+Solitaire+Premier+Tower,+Gangadham+Chowk,+Katraj+-+Kondhwa+Road,+Phase+1,+Ganga+Dham,+Pune,+Maharashtra+411037" target="_blank" rel="noopener noreferrer" class="win-btn win-btn-primary" style="font-size:11px;">
+                        <i class="fas fa-map-marker-alt"></i> Get Directions →
+                    </a>
+                </div>
+                <div style="background:var(--win-white); border:2px inset; padding:8px;">
+                    <div style="font-size:11px; font-weight:bold; margin-bottom:4px;"><i class="fas fa-clock"></i> Store Hours</div>
+                    <div style="font-size:12px; color:var(--win-blue);"><strong>Open Daily: 11:00 AM – 9:30 PM</strong></div>
+                </div>
+            </div>
+
+            <!-- Right: Contact -->
+            <div>
+                <div class="section-header" style="margin-bottom:6px;">
+                    <i class="fas fa-phone-alt"></i> Get in Touch
+                </div>
+                <div style="display:flex; flex-direction:column; gap:6px;">
+                    <a href="tel:+918983067267" style="display:flex; align-items:center; gap:8px; background:var(--win-white); border:2px inset; padding:8px; text-decoration:none; color:var(--win-black);">
+                        <div style="width:32px; height:32px; background:var(--win-blue); color:white; display:flex; align-items:center; justify-content:center; border:2px solid var(--win-border-dark);">
+                            <i class="fas fa-phone-alt" style="font-size:14px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:9px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; color:#666;">Call Us</div>
+                            <div style="font-size:14px; font-weight:bold; color:var(--win-blue);">+91 89830 67267</div>
+                        </div>
+                    </a>
+                    <a href="https://wa.me/918983067267" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; background:var(--win-white); border:2px inset; padding:8px; text-decoration:none; color:var(--win-black);">
+                        <div style="width:32px; height:32px; background:#25D366; color:white; display:flex; align-items:center; justify-content:center; border:2px solid var(--win-border-dark);">
+                            <i class="fab fa-whatsapp" style="font-size:16px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:9px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; color:#666;">Message Us</div>
+                            <div style="font-size:14px; font-weight:bold; color:#25D366;">WhatsApp Chat</div>
+                        </div>
+                    </a>
+                    <a href="https://www.instagram.com/kensha_mobiles_gangadham?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:8px; background:var(--win-white); border:2px inset; padding:8px; text-decoration:none; color:var(--win-black);">
+                        <div style="width:32px; height:32px; background:linear-gradient(135deg,#fcb045,#fd1d1d,#833ab4); color:white; display:flex; align-items:center; justify-content:center; border:2px solid var(--win-border-dark);">
+                            <i class="fab fa-instagram" style="font-size:16px;"></i>
+                        </div>
+                        <div>
+                            <div style="font-size:9px; font-weight:bold; text-transform:uppercase; letter-spacing:1px; color:#666;">Follow Us</div>
+                            <div style="font-size:12px; font-weight:bold; color:#833ab4;">@kensha_mobiles_gangadham</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== WIN2K FOOTER ===== -->
+<div class="win-footer-bar">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:4px;">
+        <span>© <script>document.write(new Date().getFullYear())</script> Kensha Mobiles. All rights reserved.</span>
+        <strong style="font-size:12px; color:var(--win-blue); opacity:0.7; letter-spacing:2px;">KENSHA MOBILES</strong>
+        <span>Microsoft Windows 2000 Edition · Internet Explorer 5.5</span>
+    </div>
+</div>
+
+</div><!-- /#desktop -->
+
+<script>
+    // Taskbar clock
+    function updateClock() {
+        const now = new Date();
+        let h = now.getHours();
+        const m = now.getMinutes().toString().padStart(2, '0');
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        h = h % 12 || 12;
+        document.getElementById('taskbar-clock').textContent = h + ':' + m + ' ' + ampm;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+</script>
 
 </body>
 </html>
